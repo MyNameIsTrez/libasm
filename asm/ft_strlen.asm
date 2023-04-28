@@ -6,6 +6,6 @@ _loop:
 	cmp [rdi+rax], BYTE 0
 	je _return
 	inc	rax
-	jne _loop
+	jmp _loop
 _return:
 	ret
