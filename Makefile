@@ -30,15 +30,14 @@ endif
 
 ################################################################################
 
-ASSEMBLY_FILES :=\
-	asm/ft_strlen.asm
+ASSEMBLY_FILES := $(wildcard asm/*.asm)
 
 ifdef BONUS
 # ASSEMBLY_FILES +=\
-# 	src/collisions/get_line_rgb_bonus.c
+# 	asm/foo_bonus.c
 else
 # ASSEMBLY_FILES +=\
-# 	src/collisions/get_line_rgb.c
+# 	asm/foo.c
 endif
 
 ################################################################################

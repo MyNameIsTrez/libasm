@@ -2,7 +2,7 @@
 !*/
 
 !.gitignore
-!ft_strlen.asm
+!asm/*.asm
 !Makefile
 !subject.pdf
 !tests.c
