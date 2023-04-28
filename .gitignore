@@ -1,0 +1,9 @@
+*
+!*/
+
+!.gitignore
+!ft_strlen.asm
+!Makefile
+!subject.pdf
+!tests.c
+!TODO.md
