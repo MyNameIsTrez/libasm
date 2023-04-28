@@ -1,19 +1,11 @@
-    global _ft_strlen
-
-;_ft_strlen:
-;	mov rax, 0
-;_loop:
-;	add	rax, 1
-;	cmp rax, 10
-;	jl _loop
-;    ret
+global _ft_strlen
 
 _ft_strlen:
-	cmp [rdi], BYTE 0
-	je .zero
-.nonzero:
-	mov rax, 69
-    ret
-.zero:
-	mov rax, 42
+	mov rax, 0
+_loop:
+	cmp [rdi+rax], BYTE 0
+	je _return
+	inc	rax
+	jne _loop
+_return:
 	ret
