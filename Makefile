@@ -56,7 +56,7 @@ $(NAME): $(OBJS)
 
 obj/%.o : asm/%.asm Makefile
 	@mkdir -p $(@D)
-	nasm -f macho64 $< -o $@
+	@nasm -f macho64 $< -o $@
 
 ################################################################################
 
@@ -80,7 +80,7 @@ bonus:
 .PHONY: test_non_bonus
 test_non_bonus: all
 	@gcc -c tests.c -o obj/tests.o
-	@ld -lSystem -L. -lasm -o tests obj/tests.o && ./tests
+	@ld -lSystem -L. -lasm -o tests obj/tests.o
 	./tests
 
 .PHONY: test_bonus
