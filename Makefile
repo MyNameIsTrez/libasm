@@ -79,8 +79,9 @@ bonus:
 
 .PHONY: test_non_bonus
 test_non_bonus: all
-	@gcc -L. -lasm tests.c
-	@./a.out
+	@gcc -c tests.c -o obj/tests.o
+	@ld -lSystem -L. -lasm -o tests obj/tests.o && ./tests
+	./tests
 
 .PHONY: test_bonus
 test_bonus: bonus
