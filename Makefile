@@ -31,7 +31,7 @@ endif
 ################################################################################
 
 ASSEMBLY_FILES :=\
-	ft_strlen.asm
+	asm/ft_strlen.asm
 
 ifdef BONUS
 # ASSEMBLY_FILES +=\
@@ -43,7 +43,7 @@ endif
 
 ################################################################################
 
-OBJS := $(addprefix obj/,$(ASSEMBLY_FILES:asm=o))
+OBJS := $(patsubst asm/%,obj/%,$(ASSEMBLY_FILES:.asm=.o))
 
 ################################################################################
 
@@ -54,7 +54,7 @@ $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 	@echo Created libasm.a
 
-obj/%.o : %.asm Makefile
+obj/%.o : asm/%.asm Makefile
 	@mkdir -p $(@D)
 	nasm -f macho64 $< -o $@
 
