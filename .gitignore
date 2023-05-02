@@ -1,9 +1,12 @@
 *
 !*/
 
+!.vscode/launch.json
+!.vscode/tasks.json
+!asm/*.s
 !.gitignore
-!asm/*.asm
 !Makefile
+!README.md
 !subject.pdf
 !tests.c
 !TODO.md
