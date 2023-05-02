@@ -1,0 +1,16 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	{
+		"name": "tests",
+		"type": "cppdbg",
+		"MIMode": "lldb",
+		"request": "launch",
+		"program": "${workspaceFolder}/tests",
+		"args": [],
+		"cwd": "${workspaceFolder}",
+		"preLaunchTask": "build",
+		"internalConsoleOptions": "neverOpen"
+	}
+	]
+}
