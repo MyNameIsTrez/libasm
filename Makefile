@@ -30,19 +30,19 @@ endif
 
 ################################################################################
 
-ASSEMBLY_FILES := $(wildcard asm/*.asm)
+ASSEMBLY_FILES := $(wildcard asm/*.s)
 
 ifdef BONUS
 # ASSEMBLY_FILES +=\
-# 	asm/foo_bonus.c
+# 	asm/foo_bonus.s
 else
 # ASSEMBLY_FILES +=\
-# 	asm/foo.c
+# 	asm/foo.s
 endif
 
 ################################################################################
 
-OBJS := $(patsubst asm/%,obj/%,$(ASSEMBLY_FILES:.asm=.o))
+OBJS := $(patsubst asm/%,obj/%,$(ASSEMBLY_FILES:.s=.o))
 
 ################################################################################
 
@@ -53,9 +53,9 @@ $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 	@echo Created libasm.a
 
-obj/%.o : asm/%.asm Makefile
+obj/%.o : asm/%.s Makefile
 	@mkdir -p $(@D)
-	@nasm -f macho64 $< -o $@
+	nasm -f macho64 $< -o $@
 
 ################################################################################
 
@@ -78,8 +78,8 @@ bonus:
 
 .PHONY: test_non_bonus
 test_non_bonus: all
-	@gcc -c tests.c -o obj/tests.o
-	@ld -lSystem -L. -lasm -o tests obj/tests.o
+	gcc $(CFLAGS) -c tests.c -o obj/tests.o
+	ld -lSystem -L. -lasm -o tests obj/tests.o
 	./tests
 
 .PHONY: test_bonus
