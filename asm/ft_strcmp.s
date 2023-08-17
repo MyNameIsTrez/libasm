@@ -3,8 +3,8 @@ global _ft_strcmp
 _ft_strcmp:
 	mov rax, 0				; i = 0;
 _loop:
-	mov rcx, [rdi+rax]		; chr = str1[i];
-	cmp rcx, [rsi+rax]
+	mov rcx, rdi[rax]		; chr = str1[i];
+	cmp rcx, rsi[rax]
 	jl _return_less			; if (chr < str2[i]) goto _return_less;
 	jg _return_greater		; if (chr > str2[i]) goto _return_greater;
 	cmp rcx, 0
