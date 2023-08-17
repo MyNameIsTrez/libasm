@@ -6,7 +6,10 @@
 !asm/*.s
 !c/*.c
 !.gitignore
+!c_strlen.png
+!comparison_strlen.png
 !Makefile
+!nasm_strlen.png
 !README.md
 !subject.pdf
 !tests.c
