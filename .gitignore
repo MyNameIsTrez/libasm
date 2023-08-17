@@ -4,6 +4,7 @@
 !.vscode/launch.json
 !.vscode/tasks.json
 !asm/*.s
+!c/*.c
 !.gitignore
 !Makefile
 !README.md
