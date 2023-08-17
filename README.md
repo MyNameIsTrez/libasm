@@ -1,5 +1,7 @@
 # Summary
 
+![foo](comparison_strlen.png)
+
 ## Registers
 
 Arguments:
