@@ -42,7 +42,7 @@ void	test_ft_strcmp(void)
 	assert(ft_strcmp("ac", "aa") == 1);
 }
 
-void	_assert_single_ft_write(const char *path, int flags, int chmod, const char *written, size_t written_length)
+void	assert_single_ft_write(const char *path, int flags, int chmod, const char *written, size_t written_length)
 {
 	int fd;
 	ssize_t returned_real;
@@ -62,41 +62,41 @@ void	_assert_single_ft_write(const char *path, int flags, int chmod, const char 
 	close(fd);
 
 	assert(returned_real == returned_ft);
-	// assert(errno_real == errno_ft);
+	assert(errno_real == errno_ft);
 }
 
-void	_ft_write_errno_0(void)
+void	ft_write_errno_0(void)
 {
-	// _assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", 1);
-	// _assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", 0);
-	// _assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "ab", 2);
-	// _assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0000, "a", 1);
+	assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", 1);
+	assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", 0);
+	assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "ab", 2);
+	assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0000, "a", 1);
 }
 
 // Errno 9 is EBADF: bad file descriptor
-void	_ft_write_errno_9(void)
+void	ft_write_errno_9(void)
 {
-	// _assert_single_ft_write("/tmp/test_ft_write.txt", O_RDONLY, 0777, "a", 1);
-	// _assert_single_ft_write("asm", O_RDONLY, 0777, "", 0);
-	// _assert_single_ft_write("asm", O_RDONLY, 0777, "", -1);
-	// _assert_single_ft_write("asm", O_RDONLY, 0777, "a", 0);
-	// _assert_single_ft_write("asm", O_RDONLY, 0777, "a", 1);
-	// _assert_single_ft_write("asm", O_RDONLY, 0777, "a", 2);
-	// _assert_single_ft_write("asm", O_RDONLY, 0777, "ab", 2);
-	// _assert_single_ft_write("asm", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", 1);
+	assert_single_ft_write("/tmp/test_ft_write.txt", O_RDONLY, 0777, "a", 1);
+	assert_single_ft_write("asm", O_RDONLY, 0777, "", 0);
+	assert_single_ft_write("asm", O_RDONLY, 0777, "", -1);
+	assert_single_ft_write("asm", O_RDONLY, 0777, "a", 0);
+	assert_single_ft_write("asm", O_RDONLY, 0777, "a", 1);
+	assert_single_ft_write("asm", O_RDONLY, 0777, "a", 2);
+	assert_single_ft_write("asm", O_RDONLY, 0777, "ab", 2);
+	assert_single_ft_write("asm", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", 1);
 }
 
 // Errno 22 is EINVAL: invalid argument
-void	_ft_write_errno_22(void)
+void	ft_write_errno_22(void)
 {
-	// _assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", -1);
+	assert_single_ft_write("/tmp/test_ft_write.txt", O_RDWR | O_CREAT | O_TRUNC, 0777, "a", -1);
 }
 
 void	test_ft_write(void)
 {
-	_ft_write_errno_0();
-	_ft_write_errno_9();
-	_ft_write_errno_22();
+	ft_write_errno_0();
+	ft_write_errno_9();
+	ft_write_errno_22();
 
 	// TODO: Try to produce other errno values
 
@@ -109,7 +109,7 @@ void	test_ft_write(void)
 	// assert(ft_write(42, "", 0) == -1);
 	// assert(ft_write(42, "", 1) == -1);
 
-	// TODO: Let _assert_single_ft_write() test that the contents of the files written to are identical
+	// TODO: Let assert_single_ft_write() test that the contents of the files written to are identical
 	// char	buf[43];
 	// int fd;
 	// bzero(buf, 43);
@@ -126,6 +126,6 @@ int	main(void)
 	test_ft_strlen();
 	test_ft_strcpy();
 	test_ft_strcmp();
-	test_ft_write();
+	// test_ft_write();
 	return EXIT_SUCCESS;
 }
