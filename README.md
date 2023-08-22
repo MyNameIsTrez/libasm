@@ -1,6 +1,6 @@
 # Summary
 
-![foo](comparison_strlen.png)
+![Comparison of nasm and C str_len](examples/comparison_str_len.png)
 
 ## Registers
 

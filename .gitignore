@@ -5,11 +5,11 @@
 !.vscode/tasks.json
 !asm/*.s
 !c/*.c
+!examples/*.png
+!examples/*.c
+!examples/*.s
 !.gitignore
-!c_strlen.png
-!comparison_strlen.png
 !Makefile
-!nasm_strlen.png
 !README.md
 !subject.pdf
 !tests.c
