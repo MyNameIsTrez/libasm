@@ -23,6 +23,7 @@ CFLAGS += -Ofast
 endif
 ifdef DEBUG
 CFLAGS += -g3
+NASM_CFLAGS += -g
 endif
 ifdef SAN
 CFLAGS += -fsanitize=address
@@ -55,7 +56,7 @@ $(NAME): $(OBJS)
 
 obj/%.o : asm/%.s Makefile
 	@mkdir -p $(@D)
-	nasm -f macho64 $< -o $@
+	nasm -f elf64 $(NASM_CFLAGS) $< -o $@
 
 ################################################################################
 
@@ -78,10 +79,10 @@ bonus:
 
 .PHONY: test_non_bonus
 test_non_bonus: all
-	gcc $(CFLAGS) -c tests.c -o obj/tests.o
-	ld -lSystem -L. -lasm -o tests obj/tests.o
+	gcc $(CFLAGS) tests.c -L. -lasm -o tests
 	./tests
 
+# TODO: Fill this rule in
 .PHONY: test_bonus
 test_bonus: bonus
 

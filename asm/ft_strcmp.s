@@ -1,13 +1,13 @@
-global _ft_strcmp
+global ft_strcmp
 
-_ft_strcmp:
+ft_strcmp:
 	mov rax, 0				; i = 0;
 _loop:
-	mov rcx, rdi[rax]		; chr = str1[i];
-	cmp rcx, rsi[rax]
+	mov cl, rdi[rax]		; chr = str1[i];
+	cmp cl, rsi[rax]
 	jl _return_less			; if (chr < str2[i]) goto _return_less;
 	jg _return_greater		; if (chr > str2[i]) goto _return_greater;
-	cmp rcx, 0
+	cmp cl, 0
 	je _both_reached_end	; if (chr == 0) goto _both_reached_end;
 	inc	rax					; i++;
 	jmp _loop				; goto _loop;

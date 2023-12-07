@@ -1,9 +1,9 @@
-; Allows other nasm and C files to call our _ft_strlen
-global _ft_strlen
+; Allows other nasm and C files to call our ft_strlen
+global ft_strlen
 
 ; rax is a 64-bit register in nasm that always holds the returned value
 ; rdi always holds the first argument, in this case str
-_ft_strlen:
+ft_strlen:
 	mov rax, 0				; i = 0; (mov is = operator)
 
 _loop:
