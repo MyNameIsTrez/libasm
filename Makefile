@@ -14,7 +14,8 @@
 
 NAME := libasm.a
 
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -fstack-protector-all
 
 ################################################################################
 
@@ -79,7 +80,7 @@ bonus:
 
 .PHONY: test_non_bonus
 test_non_bonus: all
-	gcc $(CFLAGS) tests.c -L. -lasm -o tests
+	$(CC) $(CFLAGS) tests.c -L. -lasm -o tests
 	./tests
 
 # TODO: Fill this rule in
